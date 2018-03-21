@@ -8,4 +8,4 @@ formats:
       - "kibana users"
 result:
   format: |
-    Kibana users ```{{ execution.result.stdout|regex_findall('(?="msg": ")(.*)(?="') }}```
+    Kibana users ```{{ execution.result.stdout|regex_findall('(?=\"msg\": ")(.*)(?=\"') }}```
