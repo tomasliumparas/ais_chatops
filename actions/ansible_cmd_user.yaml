@@ -16,7 +16,7 @@ parameters:
     description: "Command to run"
     type: string
     immutable: true
-    default: "/opt/stackstorm/virtualenvs/ansible/bin/ansible {{hosts}} -u ansible --become --become-user={{become_user}} --args={{args}} "
+    default: "/opt/stackstorm/virtualenvs/ansible/bin/ansible {{hosts}} -u ansible --become --become-user={{become_user}} --args='{{args}}' "
   hosts:
     description: "Ansible hosts to ping"
     type: string
