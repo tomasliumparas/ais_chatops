@@ -1,0 +1,29 @@
+---
+name: chatops.ansible_service_stop
+action_ref: ais_chatops.service_stop
+description: Stop service on remote hosts
+formats:
+  - display: "service stop <service_name> on <hosts>"
+    representation:
+      - "service stop {{ service_name }} on {{ hosts }}"
+result:
+  format: |
+    Service stop `{{ execution.parameters.service_name }}` on `{{ execution.parameters.hosts }}` host(s): {~}
+    {% if execution.result.stderr %}
+    *Exit Status*: `{{ execution.result.return_code }}`
+    *Stderr:* ```{{ execution.result.stderr }}```
+    *Stdout:*
+    {% endif %}
+    ```{{ execution.result.stdout }}```
+  extra:
+    slack:
+      color: "{% if execution.result.succeeded %}good{% else %}danger{% endif %}"
+      fields:
+        - title: Stopped
+          value: "{{ execution.result.stdout|regex_replace('(?!SUCCESS).', '')|wordcount }}"
+          short: true
+        - title: Failed
+          value: "{{ execution.result.stdout|regex_replace('(?!(FAILED|UNREACHABLE)!).', '')|wordcount }}"
+          short: true
+      footer: "{{ execution.id }}"
+      footer_icon: "https://stackstorm.com/wp/wp-content/uploads/2015/01/favicon.png"
