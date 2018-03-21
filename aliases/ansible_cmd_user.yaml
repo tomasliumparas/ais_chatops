@@ -1,0 +1,25 @@
+---
+name: chatops.ansible_cmd_user
+action_ref: ais_chatops.ansible_cmd_user
+description: Run Ansible command becoming other user
+formats:
+  - display: "ansible <hosts> <command> as <user>"
+    representation:
+      - ansible {{ hosts }} {{ args }} as {{ become_user }}
+
+result:
+  format: |
+    Here is your status for `{{ execution.parameters.hosts }}` host(s): {~}
+    ```{{ execution.result.stdout }}```
+  extra:
+    slack:
+      color: "{% if execution.result.succeeded %}good{% else %}danger{% endif %}"
+      fields:
+        - title: Alive
+          value: "{{ execution.result.stdout|regex_replace('(?!SUCCESS).', '')|wordcount }}"
+          short: true
+        - title: Dead
+          value: "{{ execution.result.stdout|regex_replace('(?!UNREACHABLE).', '')|wordcount }}"
+          short: true
+      footer: "{{ execution.id }}"
+      footer_icon: "https://stackstorm.com/wp/wp-content/uploads/2015/01/favicon.png"
