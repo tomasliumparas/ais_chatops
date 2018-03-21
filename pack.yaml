@@ -1,6 +1,6 @@
 ### Place information about your pack version here.
 ---
-name: st2-pack-ais
+name: ais_chatops
 description: AIS chatops
 version: 0.0.1
 author: Tomas Liumparas
