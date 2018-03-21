@@ -1,8 +1,8 @@
 ### Place information about your pack version here.
 ---
-name: st2-pack-template
-description: A blank pack template!
-version: 0.1.0
-author: StackStorm Stanley
-email: stanley@stackstorm.com
+name: st2-pack-ais
+description: AIS chatops
+version: 0.0.1
+author: Tomas Liumparas
+email: tomas.liumparas@gmail.com
 
