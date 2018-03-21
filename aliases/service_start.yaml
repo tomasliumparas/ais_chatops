@@ -1,0 +1,29 @@
+---
+name: chatops.ansible_service_start
+action_ref: ais_chatops.service_Start
+description: Restart service on remote hosts
+formats:
+  - display: "service start <service_name> on <hosts>"
+    representation:
+      - "service start {{ service_name }} on {{ hosts }}"
+result:
+  format: |
+    Service restart `{{ execution.parameters.service_name }}` on `{{ execution.parameters.hosts }}` host(s): {~}
+    {% if execution.result.stderr %}
+    *Exit Status*: `{{ execution.result.return_code }}`
+    *Stderr:* ```{{ execution.result.stderr }}```
+    *Stdout:*
+    {% endif %}
+    ```{{ execution.result.stdout }}```
+  extra:
+    slack:
+      color: "{% if execution.result.succeeded %}good{% else %}danger{% endif %}"
+      fields:
+        - title: Started
+          value: "{{ execution.result.stdout|regex_replace('(?!SUCCESS).', '')|wordcount }}"
+          short: true
+        - title: Failed
+          value: "{{ execution.result.stdout|regex_replace('(?!(FAILED|UNREACHABLE)!).', '')|wordcount }}"
+          short: true
+      footer: "{{ execution.id }}"
+      footer_icon: "https://stackstorm.com/wp/wp-content/uploads/2015/01/favicon.png"
