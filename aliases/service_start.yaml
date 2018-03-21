@@ -1,6 +1,6 @@
 ---
 name: chatops.ansible_service_start
-action_ref: ais_chatops.service_Start
+action_ref: ais_chatops.service_start
 description: Restart service on remote hosts
 formats:
   - display: "service start <service_name> on <hosts>"
