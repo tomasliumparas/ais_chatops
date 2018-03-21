@@ -1,0 +1,17 @@
+---
+name: "chatops.ansible_user_command"
+action_ref: "ansible.command_user"
+description: "Run Ansible command becoming other user"
+formats:
+  - display: "ansible <hosts> <command> as <user>"
+    representation:
+      - "ansible {{ hosts }} {{ args }} as {{ become_user}} {{ become=true }} {{ user=ansible }}"
+result:
+  format: |
+    Ansible command `{{ execution.parameters.args }}` as user `{{ execution.parameters.become_user }}` result: {~}
+    {% if execution.result.stderr %}*Stdout:* {% endif %}
+    ```{{ execution.result.stdout }}```
+    {% if execution.result.stderr %}*Stderr:* ```{{ execution.result.stderr }}```{% endif %}
+  extra:
+    slack:
+      color: "{% if execution.result.succeeded %}good{% else %}danger{% endif %}"
