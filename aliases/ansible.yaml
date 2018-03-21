@@ -1,11 +1,11 @@
 ---
 name: "chatops.ansible_local"
-action_ref: "ansible.command_local"
+action_ref: "ansible.command"
 description: "Run Ansible command"
 formats:
-  - display: "ansible <command>"
+  - display: "ansible <hosts> <command>"
     representation:
-      - "ansible {{ args }}"
+      - "ansible {{ hosts }} {{ args }}"
 result:
   format: |
     Ansible command `{{ execution.parameters.args }}` result: {~}
