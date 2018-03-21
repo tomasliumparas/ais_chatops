@@ -3,7 +3,7 @@ name: chatops.kibana_users
 action_ref: ais_chatops.kibana_users
 description: Get a list of Kibana users
 formats:
-  - display: ""
+  - display: "kibana users"
     representation:
       - "kibana users"
 result:
