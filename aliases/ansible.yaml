@@ -5,7 +5,7 @@ description: "Run Ansible command"
 formats:
   - display: "ansible <hosts> <command>"
     representation:
-      - "ansible {{ hosts }} {{ args }}"
+      - "ansible {{ hosts }} -u ansible {{ args }}"
 result:
   format: |
     Ansible command `{{ execution.parameters.args }}` result: {~}
