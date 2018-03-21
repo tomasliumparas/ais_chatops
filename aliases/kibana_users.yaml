@@ -1,0 +1,11 @@
+---
+name: chatops.kibana_users
+action_ref: ais_chatops.kibana_users
+description: Get a list of Kibana users
+formats:
+  - display: ""
+    representation:
+      - "kibana users"
+result:
+  format: |
+    Kibana users ```{{ execution.result.stdout }}```
