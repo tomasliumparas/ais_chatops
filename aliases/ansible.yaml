@@ -1,7 +1,7 @@
 ---
 name: "chatops.ansible_local"
 action_ref: "ansible.command_local"
-description: "Run Ansible command on local machine - AIS custom"
+description: "Run Ansible command"
 formats:
   - display: "ansible <command>"
     representation:
