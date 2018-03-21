@@ -1,0 +1,31 @@
+---
+name: ansible_cmd_user
+description: Run ansible command becoming other user
+runner_type: local-shell-cmd
+entry_point: ""
+enabled: true
+parameters:
+  sudo:
+    description: "Run command with sudo"
+    type: boolean
+    immutable: true
+    default: true
+  kwarg_op:
+    immutable: true
+  cmd:
+    description: "Command to run"
+    type: string
+    immutable: true
+    default: "/opt/stackstorm/virtualenvs/ansible/bin/ansible {{hosts}} --args={{args}} -u ansible --become --becom_user={{become_user}}"
+  hosts:
+    description: "Ansible hosts to ping"
+    type: string
+    required: true
+  args:
+    description: "Ad-hoc ansible command"
+    type: string
+    required: true
+  become_user:
+    description: "User Ansible runs command as"
+    type: string
+    required: true
