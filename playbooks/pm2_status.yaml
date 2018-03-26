@@ -1,0 +1,17 @@
+---
+- name: Get PM2 status in json
+  hosts: comet
+  user: ansible
+  become: true
+  become_user: red
+
+  tasks:
+  - name: Get PM2 status in json
+    command: pm2 jlist
+
+  # - name: print users
+  #   debug:
+  #     msg: "{{ item | regex_replace('\\:.*', '') }}"
+  #   with_items: "{{ users.stdout_lines }}"
+  #   loop_control:
+  #     label: "User"
