@@ -8,7 +8,7 @@ formats:
       - "pm2"
 result:
   format: |
-    PM2 `{{ execution.parameters.args }}` result: {~}
+    PM2 status result: {~}
     {% if execution.result.stderr %}*Stdout:* {% endif %}
     ```{{ execution.result.stdout }}```
     {% if execution.result.stderr %}*Stderr:* ```{{ execution.result.stderr }}```{% endif %}
