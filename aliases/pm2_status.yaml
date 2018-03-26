@@ -8,4 +8,11 @@ formats:
       - "pm2"
 result:
   format: |
-    Pm2 status```{{ execution.result.stdout }}```
+    PM2 `{{ execution.parameters.args }}` result: {~}
+    {% for item in execution.result.stdout.plays[0].tasks %}
+    {{ item }}
+    {% endfor %}
+
+  extra:
+    slack:
+      color: "{% if execution.result.succeeded %}good{% else %}danger{% endif %}"
