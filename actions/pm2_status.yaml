@@ -12,7 +12,10 @@ parameters:
     immutable: true
   timeout:
     default: 6000
+  args:
+    description: "Ansible arguments"
+    default: "pm2 jlist|jq -r '.[]|select(. | contains({name: \"angular-crm\"})).pm2_env.axm_monitor | to_entries[] | \"\(.key): `\(.value.value)`\"'"
   cmd:
     description: "Command to run"
     immutable: true
-    default: "/opt/stackstorm/virtualenvs/ansible/bin/ansible-playbook /opt/stackstorm/packs/${ST2_ACTION_PACK_NAME}/playbooks/pm2_status.yaml"
+    default: "/opt/stackstorm/virtualenvs/ansible/bin/ansible comet -u ansible --become --become-user=red -m shell -a {{args}}
