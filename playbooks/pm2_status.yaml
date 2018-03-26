@@ -7,7 +7,7 @@
 
   tasks:
   - name: Get PM2 status in json
-    command: pm2 jlist
+    command: pm2 prettylist
 
   # - name: print users
   #   debug:
