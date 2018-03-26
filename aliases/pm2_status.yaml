@@ -9,10 +9,9 @@ formats:
 result:
   format: |
     PM2 `{{ execution.parameters.args }}` result: {~}
-    {% for item in execution.result.stdout.plays[0].tasks %}
-    {{ item }}
-    {% endfor %}
-
+    {% if execution.result.stderr %}*Stdout:* {% endif %}
+    ```{{ execution.result.stdout }}```
+    {% if execution.result.stderr %}*Stderr:* ```{{ execution.result.stderr }}```{% endif %}
   extra:
     slack:
       color: "{% if execution.result.succeeded %}good{% else %}danger{% endif %}"
