@@ -14,7 +14,7 @@ parameters:
     default: 6000
   args:
     description: "Ansible arguments"
-    default: "pm2 jlist|jq -r '.[]|select(. | contains({name: \"angular-crm\"})).pm2_env.axm_monitor | to_entries[] | \"\\(.key): `\\(.value.value)`\"'"
+    default: "pm2 jlist|jq -r \'.[]|select(. | contains({name: \"angular-crm\"})).pm2_env.axm_monitor | to_entries[] | \"\\(.key): `\\(.value.value)`\"\'"
   cmd:
     description: "Command to run"
     immutable: true
