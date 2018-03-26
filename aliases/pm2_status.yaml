@@ -1,0 +1,11 @@
+---
+name: chatops.pm2_status
+action_ref: ais_chatops.pm2_status
+description: PM2 status
+formats:
+  - display: "pm2 status"
+    representation:
+      - "pm2"
+result:
+  format: |
+    Pm2 status```{{ execution.result.stdout }}```
