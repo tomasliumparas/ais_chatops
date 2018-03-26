@@ -15,4 +15,4 @@ parameters:
   cmd:
     description: "Command to run"
     immutable: true
-    default: "/opt/stackstorm/virtualenvs/ansible/bin/ansible comet -u ansible --become --become-user=red -m shell -a 'angular_crm/crm_status.sh'"
+    default: "/opt/stackstorm/virtualenvs/ansible/bin/ansible comet -u ansible --become --become-user=red -m shell -a '~/angular_crm/crm_status.sh'"
