@@ -18,4 +18,4 @@ parameters:
   cmd:
     description: "Command to run"
     immutable: true
-    default: "/opt/stackstorm/virtualenvs/ansible/bin/ansible comet -u ansible --become --become-user=red -m shell -a {{args}}
+    default: "/opt/stackstorm/virtualenvs/ansible/bin/ansible comet -u ansible --become --become-user=red -m shell -a {{args}}"
