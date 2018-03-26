@@ -1,14 +1,14 @@
 ---
 name: chatops.pm2_status
 action_ref: ais_chatops.pm2_status
-description: PM2 status
+description: Returns AIS CRM API usage metrics
 formats:
-  - display: "pm2 status"
+  - display: "crm status"
     representation:
-      - "pm2"
+      - "crm status"
 result:
   format: |
-    PM2 status result: {~}
+    `crm status` result: {~}
     {% if execution.result.stderr %}*Stdout:* {% endif %}
     ```{{ execution.result.stdout }}```
     {% if execution.result.stderr %}*Stderr:* ```{{ execution.result.stderr }}```{% endif %}
